@@ -37,19 +37,17 @@ public class BiTree<T> {
         if (start > end) 
             return null;
   
-        /* Pick current node from Preorder traversal using preIndex
-           and increment preIndex */
+        //Gets current node 
         Node tNode = new Node(pre[index++]);
   
-        /* If this node has no children then return */
+        // If this node has no children then return 
         if (start == end)
             return tNode;
   
-        /* Else find the index of this node in Inorder traversal */
+        // Else find the index of this node in Inorder traversal 
         int inOrder = search(in, start, end, (Integer) tNode.data);
   
-        /* Using index in Inorder traversal, construct left and
-           right subtress */
+        //Constructs the left and right subtrees
         tNode.left = buildTree(in, pre, start, inOrder - 1);
         tNode.right = buildTree(in, pre, inOrder + 1, end);
   
@@ -309,6 +307,3 @@ public class BiTree<T> {
 
 
   }
-
-
-
